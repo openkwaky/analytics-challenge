@@ -24,7 +24,7 @@ Integration
   ```
 * Then, the lib will automatically send all tags every "delay" seconds
 
-Hpw to test
+How to test
 -----------
 
 just run 
