@@ -29,7 +29,7 @@ class AppApplication : Application() {
             client.start()
         }
         analytics = Analytics(
-            Configuration.Builder().withDelay(30).withUrl("http://localhost:3000").build(),
+            Configuration.Builder().withDelay(30).withUrl("http://10.0.2.2:3000").build(),
             this
         )
     }

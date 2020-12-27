@@ -1,8 +1,8 @@
 package openkwaky.challenge.library.repository.database
 
 import openkwaky.challenge.library.model.Tag
-import openkwaky.challenge.library.repository.datasource.AnalyticsApi
 import openkwaky.challenge.library.repository.database.transformer.TagTransformer
+import openkwaky.challenge.library.repository.datasource.AnalyticsApi
 
 class TagRepository constructor(
     private val tagTransformer: TagTransformer,
@@ -16,8 +16,9 @@ class TagRepository constructor(
 
     fun sendTags() {
         database.tagDao().getAll().forEach {
-            api.sendTag(tagTransformer.transform(it))
-            database.tagDao().delete(it)
+            if (api.sendTag(tagTransformer.transform(it))) {
+                database.tagDao().delete(it)
+            }
         }
     }
 }

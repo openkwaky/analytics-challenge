@@ -13,11 +13,13 @@ class AnalyticsApi(val service: AnalyticsService) {
         fun sendTag(@Body tag: Tag): Call<Void>
     }
 
-    fun sendTag(tag: Tag) {
+    fun sendTag(tag: Tag) : Boolean {
         try {
             service.sendTag(tag).execute()
+            return true
         } catch (e: IOException) {
             Log.d("AnalyticsApi", "Network error")
         }
+        return false
     }
 }
