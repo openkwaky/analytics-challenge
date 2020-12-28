@@ -5,8 +5,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import openkwaky.challenge.library.core.AnalyticsInteractor
 import openkwaky.challenge.library.model.Tag
+import javax.inject.Inject
 
-class AnalyticsController constructor(private val interactor: AnalyticsInteractor) {
+class AnalyticsController @Inject constructor(private val interactor: AnalyticsInteractor) {
     fun addTag(tag: Tag) {
         CoroutineScope(Dispatchers.IO).launch {
             interactor.addTag(tag)

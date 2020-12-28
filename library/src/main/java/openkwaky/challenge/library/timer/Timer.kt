@@ -8,8 +8,9 @@ import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
+import javax.inject.Inject
 
-class Timer(private val repository: TagRepository) {
+class Timer @Inject constructor(private val repository: TagRepository) {
 
     private val scheduler: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
     private val isRunning: AtomicBoolean = AtomicBoolean(false)

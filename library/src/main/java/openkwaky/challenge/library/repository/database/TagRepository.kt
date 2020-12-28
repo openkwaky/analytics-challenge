@@ -3,8 +3,9 @@ package openkwaky.challenge.library.repository.database
 import openkwaky.challenge.library.model.Tag
 import openkwaky.challenge.library.repository.database.transformer.TagTransformer
 import openkwaky.challenge.library.repository.datasource.AnalyticsApi
+import javax.inject.Inject
 
-class TagRepository constructor(
+class TagRepository @Inject constructor(
     private val tagTransformer: TagTransformer,
     private val database: LibraryDatabase,
     private val api: AnalyticsApi

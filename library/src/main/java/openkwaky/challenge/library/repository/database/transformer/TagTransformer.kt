@@ -3,8 +3,9 @@ package openkwaky.challenge.library.repository.database.transformer
 import openkwaky.challenge.library.model.Tag
 import openkwaky.challenge.library.model.TagType
 import openkwaky.challenge.library.repository.database.entity.TagEntity
+import javax.inject.Inject
 
-class TagTransformer constructor() {
+class TagTransformer @Inject constructor() {
     fun transform(tag: Tag): TagEntity =
         with(tag) {
             TagEntity(

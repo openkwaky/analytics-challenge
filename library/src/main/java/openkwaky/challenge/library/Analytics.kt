@@ -7,18 +7,19 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import openkwaky.challenge.library.controller.AnalyticsController
-import openkwaky.challenge.library.di.ServiceLocator
+import openkwaky.challenge.library.di.AnalyticsComponent
 import openkwaky.challenge.library.model.Configuration
 import openkwaky.challenge.library.model.Tag
+import javax.inject.Inject
 
 class Analytics(configuration: Configuration, appContext: Context) : LifecycleObserver {
 
-    var controller: AnalyticsController
+    @Inject lateinit var controller: AnalyticsController
 
     init {
         internalConfiguration = configuration
         internalAppContext = appContext
-        controller = ServiceLocator.provideAnalyticsController()
+        AnalyticsComponent.Initializer.init(this).inject(this)
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
 
