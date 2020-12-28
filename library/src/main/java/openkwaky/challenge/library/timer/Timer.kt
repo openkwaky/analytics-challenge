@@ -2,7 +2,7 @@ package openkwaky.challenge.library.timer
 
 import android.util.Log
 import openkwaky.challenge.library.model.Configuration
-import openkwaky.challenge.library.repository.database.TagRepository
+import openkwaky.challenge.library.repository.TagRepository
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.ScheduledFuture

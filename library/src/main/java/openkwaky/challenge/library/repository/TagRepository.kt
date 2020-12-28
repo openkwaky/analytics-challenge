@@ -1,6 +1,7 @@
-package openkwaky.challenge.library.repository.database
+package openkwaky.challenge.library.repository
 
 import openkwaky.challenge.library.model.Tag
+import openkwaky.challenge.library.repository.database.LibraryDatabase
 import openkwaky.challenge.library.repository.database.transformer.TagTransformer
 import openkwaky.challenge.library.repository.datasource.AnalyticsApi
 import javax.inject.Inject

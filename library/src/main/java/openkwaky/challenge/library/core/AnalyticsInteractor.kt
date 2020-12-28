@@ -1,7 +1,7 @@
 package openkwaky.challenge.library.core
 
 import openkwaky.challenge.library.model.Tag
-import openkwaky.challenge.library.repository.database.TagRepository
+import openkwaky.challenge.library.repository.TagRepository
 import openkwaky.challenge.library.timer.Timer
 import javax.inject.Inject
 
