@@ -40,6 +40,6 @@ Possible improvements
 
 * The library is developed with the clean architecture in mind but by lack of time it needs some additional interfaces and POJOs to be fully compliant with the architecture and to respect the SOLID principles
 * Unit tests are not ready yet
-* It would be preferable to send a list of tags to the http server, not one by one
+* It should be preferable to send a list of tags to the http server, not one by one
 * Upload on Jcenter when ready
 
