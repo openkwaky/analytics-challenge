@@ -12,13 +12,11 @@ import openkwaky.challenge.library.model.Configuration
 import openkwaky.challenge.library.model.Tag
 import javax.inject.Inject
 
-class Analytics(configuration: Configuration, appContext: Context) : LifecycleObserver {
+class Analytics(val configuration: Configuration, val appContext: Context) : LifecycleObserver {
 
     @Inject lateinit var controller: AnalyticsController
 
     init {
-        internalConfiguration = configuration
-        internalAppContext = appContext
         AnalyticsComponent.Initializer.init(this).inject(this)
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
@@ -35,11 +33,6 @@ class Analytics(configuration: Configuration, appContext: Context) : LifecycleOb
     @OnLifecycleEvent(Event.ON_START)
     fun onStart(source: LifecycleOwner?) {
         controller.scheduleSendTags()
-    }
-
-    companion object {
-        lateinit var internalConfiguration: Configuration
-        lateinit var internalAppContext: Context
     }
 
 }
