@@ -11,7 +11,6 @@ import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPl
 import com.facebook.soloader.SoLoader
 import openkwaky.challenge.analytics.BuildConfig
 import openkwaky.challenge.library.Analytics
-import openkwaky.challenge.library.model.Configuration
 
 
 class AppApplication : Application() {
@@ -28,10 +27,11 @@ class AppApplication : Application() {
             client.addPlugin(SharedPreferencesFlipperPlugin(this))
             client.start()
         }
-        analytics = Analytics(
-            Configuration.Builder().withDelay(10).withUrl("http://10.0.2.2:3000").build(),
-            this
-        )
+        analytics = Analytics.Builder()
+                .withDelay(10)
+                .withUrl("http://10.0.2.2:3000")
+                .withContext(this)
+                .build()
     }
 
     companion object {

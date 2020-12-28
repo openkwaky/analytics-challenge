@@ -10,12 +10,13 @@ Introduction
 Integration
 -----------
 
-* To configure the library, users need to call a builder and instanciate the Analytics class : 
+* To configure the library, users need to call a builder that instantiate the Analytics class : 
   ```kotlin
-     val analytics = Analytics(
-            Configuration.Builder().withDelay(30).withUrl("http://localhost:3000").build(),
-            this
-        )
+     val analytics = Analytics.Builder()
+                         .withDelay(10)
+                         .withUrl("http://10.0.2.2:3000")
+                         .withContext(this)
+                         .build()
   ```
   NB : the delay is in seconds
 * Then to send a tag, just call the **addTag** method like :

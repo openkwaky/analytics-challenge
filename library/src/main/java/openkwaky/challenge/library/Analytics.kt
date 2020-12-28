@@ -12,9 +12,14 @@ import openkwaky.challenge.library.model.Configuration
 import openkwaky.challenge.library.model.Tag
 import javax.inject.Inject
 
-class Analytics(val configuration: Configuration, val appContext: Context) : LifecycleObserver {
+class Analytics private constructor(
+    url: String?,
+    delay: Int?,
+    appContext: Context?
+) : LifecycleObserver {
 
     @Inject lateinit var controller: AnalyticsController
+    var configuration: Configuration = Configuration(url, delay, appContext)
 
     init {
         AnalyticsComponent.Initializer.init(this).inject(this)
@@ -35,4 +40,14 @@ class Analytics(val configuration: Configuration, val appContext: Context) : Lif
         controller.scheduleSendTags()
     }
 
+    data class Builder(
+        var url: String? = null,
+        var delay: Int? = 0,
+        var appContext: Context? = null
+    ) {
+        fun withUrl(url: String) = apply { this.url = url }
+        fun withDelay(delay: Int) = apply { this.delay = delay }
+        fun withContext(context: Context) = apply { this.appContext = context }
+        fun build() = Analytics(url, delay, appContext)
+    }
 }

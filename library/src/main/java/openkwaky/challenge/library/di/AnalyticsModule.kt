@@ -34,5 +34,5 @@ class AnalyticsModule(val analytics: Analytics) {
     fun provideConfiguration(): Configuration = analytics.configuration
 
     @Provides
-    fun provideContext(): Context = analytics.appContext
+    fun provideContext(configuration: Configuration): Context = configuration.appContext!!
 }
